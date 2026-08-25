@@ -1,0 +1,3 @@
+[submodule "PhantomRPC"]
+	path = PhantomRPC
+	url = https://github.com/uetsymphonique/PhantomRPC

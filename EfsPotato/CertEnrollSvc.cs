@@ -522,9 +522,14 @@ namespace CertificateServices.Enrollment
             string targetCmdLine = null;
             string tempFilePath  = null;
 
-            IntPtr hStdin = X.pfGetStdHandle(STD_INPUT_HANDLE);
-            if (X.pfGetFileType(hStdin) == FILE_TYPE_PIPE)
+            if (args.Length >= 1)
             {
+                targetCmdLine = args[0];
+            }
+            else
+            {
+                IntPtr hStdin = X.pfGetStdHandle(STD_INPUT_HANDLE);
+                if (X.pfGetFileType(hStdin) != FILE_TYPE_PIPE) return;
                 try
                 {
                     Stream s = Console.OpenStandardInput();
@@ -538,11 +543,6 @@ namespace CertificateServices.Enrollment
                     targetCmdLine = tempFilePath;
                 }
                 catch { return; }
-            }
-            else
-            {
-                if (args.Length < 1) return;
-                targetCmdLine = args[0];
             }
 
             string ep1 = X.S(X._ep1), ep2 = X.S(X._ep2), ep3 = X.S(X._ep3), ep4 = X.S(X._ep4), ep5 = X.S(X._ep5);

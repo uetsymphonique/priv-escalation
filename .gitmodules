@@ -1,3 +1,6 @@
 [submodule "PhantomRPC"]
 	path = PhantomRPC
 	url = https://github.com/uetsymphonique/PhantomRPC
+[submodule "uac-bypass/uacme"]
+	path = uac-bypass/uacme
+	url = https://github.com/hfiref0x/UACME
